@@ -1,0 +1,84 @@
+/* FARES MASHOUR — brand stylesheet */
+:root{
+  --ink:#1a1a1a; --paper:#f4f1ec; --gold:#e8c874; --accent:#5c2430;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: 'Segoe UI', Arial, Helvetica, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1150px;margin:0 auto;padding:0 20px}
+
+/* announcement + nav */
+.announce{background:var(--ink);color:var(--gold);text-align:center;font-size:.8rem;letter-spacing:2px;padding:8px;text-transform:uppercase}
+header.site{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid #ddd}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1150px;margin:0 auto}
+.logo{font-family:var(--serif);font-weight:700;font-size:1.35rem;letter-spacing:3px}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:26px;font-size:.85rem;letter-spacing:2px;text-transform:uppercase}
+.nav-links a:hover{color:var(--accent)}
+@media(max-width:640px){.nav-links{gap:12px;font-size:.7rem}}
+
+/* hero */
+.hero{background:linear-gradient(135deg,#1a1a1a 0%,#3a2430 100%);color:var(--paper);text-align:center;padding:90px 20px}
+.hero h1{font-family:var(--serif);font-size:clamp(2.2rem,6vw,4rem);letter-spacing:6px}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{margin-top:14px;opacity:.85;letter-spacing:2px}
+.btn{display:inline-block;background:var(--gold);color:var(--ink);padding:13px 34px;border-radius:2px;
+  font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:.8rem;border:none;cursor:pointer;margin-top:26px}
+.btn.dark{background:var(--ink);color:var(--paper)}
+.btn.danger{background:#a33;color:#fff}
+.btn.small{padding:8px 16px;font-size:.7rem;margin-top:0}
+
+/* sections / category cards */
+section{padding:64px 0}
+.sec-title{text-align:center;font-family:var(--serif);letter-spacing:4px;font-size:1.8rem;margin-bottom:8px}
+.sec-sub{text-align:center;color:#777;letter-spacing:2px;font-size:.85rem;margin-bottom:38px;text-transform:uppercase}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.cat-card{background:#fff;border:1px solid #e2ddd3;text-align:center;padding:26px 16px;border-radius:4px;cursor:pointer;transition:.2s}
+.cat-card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+.cat-card img{width:150px;margin:0 auto 14px}
+.cat-card h3{letter-spacing:3px;text-transform:uppercase;font-size:.95rem}
+.cat-card small{color:#888}
+
+/* product grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px}
+.card{background:#fff;border:1px solid #e2ddd3;border-radius:4px;overflow:hidden;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 26px rgba(0,0,0,.08)}
+.card img{width:100%;aspect-ratio:1;object-fit:cover;background:#f4f1ec}
+.card .body{padding:16px}
+.card h4{letter-spacing:1px;font-size:.95rem}
+.card .cat{font-size:.7rem;color:#999;text-transform:uppercase;letter-spacing:2px}
+.card .price{margin-top:6px;font-weight:700;color:var(--accent)}
+.badge{position:absolute;background:var(--gold);color:var(--ink);font-size:.65rem;font-weight:700;
+  letter-spacing:2px;padding:4px 10px;text-transform:uppercase}
+.card{position:relative}
+
+/* filter pills */
+.filters{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:34px}
+.pill{padding:8px 20px;border:1px solid var(--ink);border-radius:999px;background:transparent;cursor:pointer;
+  font-size:.75rem;letter-spacing:2px;text-transform:uppercase}
+.pill.active,.pill:hover{background:var(--ink);color:var(--paper)}
+
+/* footer */
+footer{background:var(--ink);color:#bbb;padding:44px 20px;text-align:center;font-size:.8rem;letter-spacing:2px}
+footer .logo{color:var(--paper)}
+
+/* ---------- admin ---------- */
+.admin-login{max-width:380px;margin:80px auto;background:#fff;border:1px solid #e2ddd3;padding:36px;border-radius:6px;text-align:center}
+.admin-login input{width:100%;padding:12px;margin-top:14px;border:1px solid #ccc;border-radius:4px}
+.admin-bar{display:flex;justify-content:space-between;align-items:center;background:var(--ink);color:#fff;padding:12px 22px}
+.admin-bar a{color:var(--gold);font-size:.8rem;letter-spacing:2px;margin-left:16px}
+.panel{max-width:1100px;margin:30px auto;padding:0 20px}
+.panel h2{font-family:var(--serif);letter-spacing:3px;margin:22px 0 14px}
+table{width:100%;border-collapse:collapse;background:#fff;font-size:.85rem}
+th,td{padding:10px 12px;border-bottom:1px solid #eee;text-align:left}
+th{background:#faf8f4;letter-spacing:1px;text-transform:uppercase;font-size:.7rem}
+td img{width:52px;height:52px;object-fit:cover;border-radius:4px;border:1px solid #eee}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;background:#fff;
+  border:1px solid #e2ddd3;padding:20px;border-radius:6px;margin-bottom:30px}
+.form-grid input,.form-grid select{padding:10px;border:1px solid #ccc;border-radius:4px;width:100%}
+.form-grid label{font-size:.7rem;letter-spacing:1px;text-transform:uppercase;color:#666;display:block;margin-bottom:4px}
+.msg{padding:12px 16px;border-radius:4px;margin-bottom:14px;font-size:.85rem}
+.msg.ok{background:#e7f5e7;color:#2c6e2c}.msg.err{background:#fbe7e7;color:#8c2c2c}
