@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin — FARES MASHOUR</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="announce"></div>
+
+<!-- LOGIN GATE -->
+<div id="login-view" class="admin-login">
+  <div class="logo">FARES <span>MASHOUR</span></div>
+  <p style="color:#777;font-size:.8rem;margin-top:6px">Admin Panel</p>
+  <form onsubmit="fmLogin(event)">
+    <input type="password" id="pass" placeholder="Password (default: admin123)" required>
+    <button class="btn dark" style="width:100%">Enter</button>
+  </form>
+  <p id="login-err" style="color:#a33;font-size:.8rem;margin-top:10px"></p>
+</div>
+
+<!-- PANEL -->
+<div id="panel-view" style="display:none">
+  <div class="admin-bar">
+    <strong>FARES MASHOUR — Admin</strong>
+    <span>
+      <a href="index.html">View Store</a><a href="#" onclick="fmLogout();return false;">Logout</a>
+    </span>
+  </div>
+
+  <div class="panel">
+    <div id="msg" style="display:block"></div>
+
+    <h2>Add / Edit Product</h2>
+    <form id="prod-form" class="form-grid" onsubmit="fmAdd(event)">
+      <input type="hidden" id="edit-id">
+      <div><label>Name</label><input id="f-name" required placeholder="Signature Tee — Black"></div>
+      <div><label>Category</label>
+        <select id="f-cat"><option>T-Shirts</option><option>Hoodies</option><option>Caps</option><option>Pants</option></select></div>
+      <div><label>Price (EGP)</label><input id="f-price" type="number" min="0" required placeholder="550"></div>
+      <div><label>Badge</label><input id="f-badge" placeholder="New / Best Seller / Limited"></div>
+      <div><label>Sizes</label><input id="f-sizes" placeholder="S,M,L,XL"></div>
+      <div><label>Image path</label><input id="f-img" placeholder="assets/img/tee-black.svg"></div>
+      <div style="display:flex;gap:10px;align-items:end">
+        <button class="btn dark" type="submit">Save Product</button>
+        <button class="btn" type="button" onclick="fmResetForm()">Clear</button>
+      </div>
+    </form>
+
+    <h2>Catalog</h2>
+    <table><thead><tr><th></th><th>Name</th><th>Category</th><th>Price</th><th>Badge</th><th>Actions</th></tr></thead>
+    <tbody id="prod-rows"></tbody></table>
+    <p style="margin:14px 0">
+      <button class="btn small dark" onclick="fmExport()">Export Catalog (JSON)</button>
+      <label class="btn small" style="display:inline-block">Import JSON<input type="file" accept=".json" hidden onchange="fmImport(event)"></label>
+      <button class="btn small danger" onclick="fmResetAll()">Reset to Defaults</button>
+    </p>
+
+    <h2>Site Settings</h2>
+    <form class="form-grid" onsubmit="fmSaveSettings(event)">
+      <div><label>Announcement bar</label><input id="s-announce"></div>
+      <div><label>Hero title (HTML allowed)</label><input id="s-title"></div>
+      <div><label>Hero subtitle</label><input id="s-sub"></div>
+      <div style="display:flex;align-items:end"><button class="btn dark">Save Settings</button></div>
+    </form>
+
+    <h2>Change Admin Password</h2>
+    <form class="form-grid" onsubmit="fmSavePass(event)" style="max-width:420px">
+      <div><label>New password</label><input id="new-pass" required></div>
+      <div style="display:flex;align-items:end"><button class="btn dark">Update</button></div>
+    </form>
+  </div>
+</div>
+
+<script src="assets/data.js"></script>
+<script src="assets/admin.js"></script>
+<script>
+  // toggle views after scripts load
+  if(sessionStorage.getItem("fm_admin_ok")==="1"){
+    document.getElementById("login-view").style.display="none";
+    document.getElementById("panel-view").style.display="block";
+  }
+</script>
+</body></html>
