@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+<rect width="400" height="400" fill="#f4f1ec"/>
+<path d="M110 200 Q110 95 200 95 Q290 95 290 200 Z" fill="#1a1a1a" stroke="#222" stroke-width="4"/>
+<path d="M110 200 Q200 165 340 195 Q345 212 330 216 Q200 192 110 214 Z" fill="#1a1a1a" stroke="#222" stroke-width="4"/>
+<circle cx="200" cy="100" r="8" fill="#e8c874"/>
+<text x="200" y="160" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="22" fill="#e8c874" letter-spacing="2">FARES</text>
+<text x="200" y="186" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="16" fill="#e8c874" letter-spacing="4">MASHOUR</text>
+</svg>

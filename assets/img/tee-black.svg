@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+<rect width="400" height="400" fill="#f4f1ec"/>
+<path d="M125 70 L85 95 L55 155 L92 178 L112 142 L112 345 L288 345 L288 142 L308 178 L345 155 L315 95 L275 70 Q200 118 125 70 Z" fill="#1a1a1a" stroke="#222" stroke-width="4" stroke-linejoin="round"/>
+<path d="M125 70 Q200 118 275 70 Q200 132 125 70 Z" fill="none" stroke="#f5f0e6" stroke-width="3"/>
+<text x="200" y="205" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="34" fill="#f5f0e6" letter-spacing="4">FARES</text>
+<text x="200" y="245" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="34" fill="#f5f0e6" letter-spacing="4">MASHOUR</text>
+<text x="200" y="280" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#f5f0e6" letter-spacing="6">EST. 2026 — CAIRO</text>
+</svg>

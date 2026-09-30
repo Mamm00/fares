@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+<rect width="400" height="400" fill="#f4f1ec"/>
+<path d="M140 40 Q200 5 260 40 L305 75 L350 160 L310 182 L292 150 L292 350 L108 350 L108 150 L90 182 L50 160 L95 75 Z" fill="#3d3d3d" stroke="#222" stroke-width="4" stroke-linejoin="round"/>
+<path d="M150 45 Q200 95 250 45 Q225 115 200 118 Q175 115 150 45 Z" fill="none" stroke="#e8c874" stroke-width="3"/>
+<path d="M168 250 h64 v60 q0 15 -15 15 h-34 q-15 0 -15 -15 Z" fill="none" stroke="#e8c874" stroke-width="3"/>
+<text x="200" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#e8c874" letter-spacing="3">FARES MASHOUR</text>
+</svg>
