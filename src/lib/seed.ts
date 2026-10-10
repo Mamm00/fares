@@ -58,7 +58,7 @@ const PRODUCT_SEED = [
     name: "Signature Heavyweight Tee — White",
     slug: "signature-tee-white",
     description:
-      "Off-white, bone-clean, impossible to ignore. Same heavyweight 240 GSM body, same boxy FM cut, flipped in black collegiate type. Pre-washed so it fits the same on day one hundred as day one.",
+      "Off-white, bone-clean, impossible to ignore. Same heavyweight 240 GSM body, same boxy FM cut, flipped in black collegiate type.",
     priceCents: 6500,
     compareAtCents: null,
     categorySlug: "t-shirts",
@@ -74,7 +74,7 @@ const PRODUCT_SEED = [
     name: "Signature Heavyweight Tee — Sand",
     slug: "signature-tee-sand",
     description:
-      "Desert tones, city attitude. The sand colourway pairs an ecru heavyweight body with espresso-brown chest type. Garment-dyed for depth, built to fade beautifully, never cheaply.",
+      "Desert tones, city attitude. The sand colourway pairs an ecru heavyweight body with espresso-brown chest type.",
     priceCents: 6500,
     compareAtCents: null,
     categorySlug: "t-shirts",
@@ -90,7 +90,7 @@ const PRODUCT_SEED = [
     name: "FM Monogram Graphic Tee",
     slug: "fm-monogram-graphic-tee",
     description:
-      "The limited one. An oversized front graphic carrying the giant FM monogram with a single ember-orange strike underneath. Printed once, numbered mentally, gone forever when it sells through.",
+      "The limited one. An oversized front graphic carrying the giant FM monogram with a single ember-orange strike underneath.",
     priceCents: 7200,
     compareAtCents: 8800,
     categorySlug: "t-shirts",
@@ -106,7 +106,7 @@ const PRODUCT_SEED = [
     name: "Oversized Fleece Hoodie — Black",
     slug: "oversized-hoodie-black",
     description:
-      "450 GSM brushed-back fleece that hangs like armour. Double-lined hood, hidden phone pocket inside the kangaroo pouch, and the FARES MASHOUR wordmark printed high on the chest. Built for winter, worn all year.",
+      "450 GSM brushed-back fleece that hangs like armour. Double-lined hood, hidden phone pocket inside the kangaroo pouch.",
     priceCents: 12000,
     compareAtCents: null,
     categorySlug: "hoodies",
@@ -122,7 +122,7 @@ const PRODUCT_SEED = [
     name: "Oversized Fleece Hoodie — Heather Grey",
     slug: "oversized-hoodie-grey",
     description:
-      "The quiet flex. Heather grey fleece with black collegiate type — the hoodie that goes with everything you own and upgrades all of it. Same 450 GSM armourweight build as the black.",
+      "The quiet flex. Heather grey fleece with black collegiate type — the hoodie that goes with everything you own.",
     priceCents: 12000,
     compareAtCents: null,
     categorySlug: "hoodies",
@@ -138,7 +138,7 @@ const PRODUCT_SEED = [
     name: "Logo Sweatpants — Black",
     slug: "logo-sweatpants-black",
     description:
-      "Relaxed through the thigh, stacked at the cuff. Heavyweight loopback sweatpants with a tonal drawstring and the FARES MASHOUR print hit on the left thigh. Pairs with everything, apologises for nothing.",
+      "Relaxed through the thigh, stacked at the cuff. Heavyweight loopback sweatpants with a tonal drawstring.",
     priceCents: 9500,
     compareAtCents: null,
     categorySlug: "bottoms",
@@ -154,7 +154,7 @@ const PRODUCT_SEED = [
     name: "FM Embroidered Cap",
     slug: "fm-embroidered-cap",
     description:
-      "Six panels, zero compromise. A structured black cap with the FM monogram embroidered in raised white thread and FARES MASHOUR stitched beneath. Adjustable strap, pre-curved brim, instant uniform.",
+      "Six panels, zero compromise. A structured black cap with the FM monogram embroidered in raised white thread.",
     priceCents: 4500,
     compareAtCents: null,
     categorySlug: "accessories",
@@ -168,7 +168,24 @@ const PRODUCT_SEED = [
   },
 ];
 
+async function tablesExist(): Promise<boolean> {
+  try {
+    await db.execute(
+      sql`SELECT 1 FROM information_schema.tables WHERE table_name = 'categories' AND table_schema = 'public'`,
+    );
+    // Actually check if we can query the table
+    await db.execute(sql`SELECT 1 FROM categories LIMIT 1`);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 async function doSeed(): Promise<void> {
+  // Bail out gracefully if DB unreachable or tables don't exist yet
+  const ready = await tablesExist().catch(() => false);
+  if (!ready) return;
+
   const count = await db
     .select({ n: sql<number>`count(*)::int` })
     .from(categories);
@@ -194,8 +211,8 @@ let seeded: Promise<void> | null = null;
 export function ensureSeeded(): Promise<void> {
   if (!seeded) {
     seeded = doSeed().catch((err) => {
-      seeded = null;
-      throw err;
+      console.error("[FM seed] failed:", err?.message ?? err);
+      seeded = null; // allow retry on next request
     });
   }
   return seeded;

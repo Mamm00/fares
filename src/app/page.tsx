@@ -1,15 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import DbSetupBanner from "@/components/DbSetupBanner";
 import Marquee from "@/components/Marquee";
 import NewsletterForm from "@/components/NewsletterForm";
 import ProductCard from "@/components/ProductCard";
 import Reveal from "@/components/Reveal";
-import { listCategories, listProducts } from "@/lib/data";
+import { isDbAvailable, listCategories, listProducts } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
+  const dbReady = await isDbAvailable();
+  if (!dbReady) return <DbSetupBanner />;
+
   const [categories, featured, all] = await Promise.all([
     listCategories(),
     listProducts({ featured: true }),
